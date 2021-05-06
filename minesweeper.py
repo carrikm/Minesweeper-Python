@@ -17,9 +17,15 @@ while (keep_playing[0].lower() == 'y'):
 
     num_mines = board_size**2 + 1
     # can't have more mines than spaces
-    while (num_mines > board_size**2):
+    while (num_mines < 1 or num_mines > board_size**2):
         num_mines = int(input("How many mines would you like there to be?\n"))
         
+        if num_mines < 1:
+            print("Cannot play a game with no mines.")
+        elif num_mines > board_size**2:
+            print("Cannot have more mines than board tiles.")
+    
+    
     play(board_size,num_mines)
         
     keep_playing = str(input("Would you like to play again?\n"))
